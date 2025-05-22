@@ -9,7 +9,7 @@ public class Hora
 	{
 		setHor();
 		setMin();
-		setSeg();;
+		setSeg();
 	}
 
 	public Hora(int h, int m, int s)
