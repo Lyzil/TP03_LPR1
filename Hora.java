@@ -91,15 +91,15 @@ public class Hora
 
     public String getHora1()
 	{
-		return (hora, ':', min,':', seg);
+		return hora + ":" + min + ":" + seg;
 	}
      public String getHora2()
 	{
 		if (hora > 12){
 			hora -= 12;
-			return (hora, ':', min,':', seg,' PM');
+			return hora + ":" + min + ":" + seg + 'PM';
 		}
-		else{return (hora, ':', min,':', seg,' AM');}
+		else{return hora + ":" + min + ":" + seg + 'AM';}
 	}
 	public int getSegundos()
 	{
