@@ -34,17 +34,16 @@ public class Hora
 		int resH;
 		boolean verificador = false;
         Scanner scan = new Scanner(System.in);
-        do{
-		System.out.println("Digite a hora: ");
+        while(!verificador){
+		System.out.print("Digite a hora: ");
         resH = scan.nextInt();
-		if(resH <= 24 && resH >= 1)
+		if(resH <= 24 && resH >= 0)
 		{
 			this.hora = resH;
 			verificador = true;
 		}
 		else{System.out.println("Valor errado!!! digite novemente!");}
-		}while(verificador);
-
+        }
     }
 
 	public void setMin() {
@@ -54,13 +53,13 @@ public class Hora
 		do{
         System.out.print("Digite o minuto: ");
         resM = scan.nextInt();
-		if(resM <= 60 && resM >= 1)
+		if(resM <= 60 && resM >= 0)
 		{
-			this.min = resH;
+			this.min = resM;
 			verificador = true;
 		}
 		else{System.out.println("Valor errado!!! digite novemente!");}
-		}while(verificador);
+		}while(!verificador);
     }
 
 	public void setSeg() {
@@ -69,14 +68,14 @@ public class Hora
         Scanner scan = new Scanner(System.in);
 		do{
         System.out.print("Digite o segundo: ");
-        resM = scan.nextInt();
-		if(resS <= 60 && resS >= 1)
+        resS = scan.nextInt();
+		if(resS <= 60 && resS >= 0)
 		{
 			this.seg = resS;
 			verificador = true;
 		}
 		else{System.out.println("Valor errado!!! digite novemente!");}
-		}while(verificador);
+		}while(!verificador);
     }
 
 	public int getHor() {
@@ -95,11 +94,12 @@ public class Hora
 	}
      public String getHora2()
 	{
+	    int fix = hora;
 		if (hora > 12){
-			hora -= 12;
-			return hora + ":" + min + ":" + seg + 'PM';
+			fix -= 12;
+			return fix + ":" + min + ":" + seg + " PM";
 		}
-		else{return hora + ":" + min + ":" + seg + 'AM';}
+		else{return hora + ":" + min + ":" + seg + " AM";}
 	}
 	public int getSegundos()
 	{
@@ -108,13 +108,31 @@ public class Hora
 	
 	public static void main (String[] args) {
 
-	hora h1 = new hora();
-	Scanner scan = new Scanner(System.in);
+	Hora h1 = new Hora();
+	Hora h2 = new Hora(13, 32, 40);
+	Hora h3 = new Hora(0, 0, 0);
+	h3.setHor(1);
+	h3.setMin(1);
+	h3.setSeg(1);
+	
+	
+	/*Scanner scan = new Scanner(System.in);
 	
 	System.out.println("Digite: ");
 	placeholder = scan.nextInt();
 
 	scan.close();*/
 	
+	System.out.println(h1.getHora1());
+	System.out.println(h1.getHora2());
+	System.out.println(h2.getHora1());
+	System.out.println(h2.getHora2());
+	System.out.println(h1.getHor());
+	System.out.println(h1.getMin());
+	System.out.println(h2.getHor());
+	System.out.println(h2.getMin());
+	System.out.println("h2.getHora2()");
+	System.out.println(h3.getHora2());
+	System.out.println("segundos :" + h3.getSegundos());
 	}
 }
